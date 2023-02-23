@@ -39,7 +39,11 @@ class Equinox(commands.Bot):
         print(bot.user)
 
     def run(self):
-        super().run(os.getenv("bot_token"), reconnect=True)
+        try:
+            super().run(os.getenv("bot_tokken"), reconnect=True)
+        except:
+            if TypeError:
+                print("tokken not found")
 
 
 bot = Equinox()
