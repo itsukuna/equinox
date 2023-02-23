@@ -1,1 +1,1 @@
-# equinox
+# Equinox
