@@ -10,6 +10,7 @@ from logging_config import logger
 intents = nextcord.Intents.default()
 intents.members = True
 intents.message_content = True
+testing_guild = ["907379598835208243"]
 
 
 class Equinox(commands.Bot):
@@ -22,7 +23,9 @@ class Equinox(commands.Bot):
         Initializes the bot with a command prefix and intents.
         """
         self.prefix = "!"
-        super().__init__(command_prefix=self.prefix, intents=intents)
+        super().__init__(
+            command_prefix=self.prefix, intents=intents, default_guild_ids=testing_guild
+        )
 
     def load_cogs(self):
         """
@@ -58,10 +61,7 @@ class Equinox(commands.Bot):
         """
         Event that fires when the bot is ready to receive commands.
         """
-        activity = nextcord.Activity(
-            type=nextcord.ActivityType.watching,
-            name="Over"
-        )
+        activity = nextcord.Activity(type=nextcord.ActivityType.watching, name="Over")
         await self.change_presence(activity=activity)
         logger.info(f"Logged in as {self.user}")
 
